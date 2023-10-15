@@ -1,14 +1,19 @@
 import Image from 'next/image';
-import { RegisterLink, LoginLink } from '@kinde-oss/kinde-auth-nextjs/server';
-import Map from './components/map';
+import { RegisterLink, LoginLink, getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
+
+import Map from '@/components/map';
+import { redirect } from 'next/navigation';
 
 const test = {
   lat: 52.5065133,
   long: 13.1445548,
 };
 
+export default async function Home() {
+  const { isAuthenticated } = getKindeServerSession();
 
-export default function Home() {
+  // if (isAuthenticated()) redirect('/dashboard');
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
