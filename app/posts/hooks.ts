@@ -1,7 +1,10 @@
 'use client';
 
 import { useQuery, useMutation, useQueryClient, QueryClient } from 'react-query';
+import { redirect } from 'next/navigation';
 import client from './client';
+
+
 import { Post, CreatePostRequest, DeletePostRequest, UpdatePostRequest } from './types';
 
 const loadingPost = {
@@ -31,11 +34,11 @@ export function usePosts(initialData: Post[]) {
 }
 
 export function usePost(postId: string) {
-  const { data } = useQuery<Post>({
+  const result = useQuery<Post>({
     queryKey: ['post', { postId }],
     queryFn: () => client(`posts/${postId}`).then((post) => post),
   });
-  return data ?? loadingPost;
+  return { ...result, data: result.data ?? [] };
 }
 
 // const [update, {error, isError}] = useUpdatePost()
@@ -101,7 +104,7 @@ export function useDeletePost() {
     mutationFn: (postToDelete: DeletePostRequest) => client(`posts/${postToDelete.id}`, {
       method: 'DELETE',
     }),
-    onMutate: async (postToDelete: Post) => {
+    onMutate: async (postToDelete: DeletePostRequest) => {
       // Optimistic update
       await queryClient.cancelQueries('posts');
       const previousPosts = queryClient.getQueryData<Post[]>('posts') || [];

@@ -1,8 +1,9 @@
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 interface RequestOptions {
-  data?: Record<string, any>;
-  headers?: Record<string, string>;
+  data?: Record<string, any>
+  headers?: Record<string, string>
+  method?: string
 }
 
 export default async function client(

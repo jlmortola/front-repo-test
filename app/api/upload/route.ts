@@ -18,7 +18,8 @@ const cloudinaryConfig = {
   folder: 'store',
 };
 
-export default async function POST(req: Request) {
+// eslint-disable-next-line import/prefer-default-export
+export async function POST(req: Request) {
   if (req.method === 'POST') {
     const { image } = await req.json();
     // TODO: accept different file types (pdf, video, etc...)
