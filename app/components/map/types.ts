@@ -4,5 +4,9 @@ export type Coordinate = {
 }
 
 export type MapProps = {
-  coordinates: Coordinate[];
+}
+
+export type MapHookProps = {
+  showMarker: boolean
+  coordinates: Coordinate[]
 }
