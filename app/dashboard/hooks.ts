@@ -1,6 +1,6 @@
 'use client';
 
-import { useQuery, useMutation, useQueryClient, QueryClient} from 'react-query';
+import { useQuery, useMutation, useQueryClient, QueryClient } from 'react-query';
 import client from './client';
 import { Post, CreatePostRequest, DeletePostRequest, UpdatePostRequest } from './types';
 
@@ -16,16 +16,18 @@ function setQueryDataForPost(post: Post, queryClient: QueryClient) {
   queryClient.setQueryData(['post', { post: post.id }], post);
 }
 
-export function usePosts() {
+export function usePosts(initialData: Post[]) {
   const queryClient = useQueryClient();
-  const { data } = useQuery<Post[]>({
+  const result = useQuery<Post[]>({
     queryKey: 'posts',
     queryFn: () => client('posts').then((posts) => posts),
+    initialData,
   });
 
-  if (data?.length) data.forEach((post) => setQueryDataForPost(post, queryClient));
+  const { data } = result;
 
-  return data ?? [];
+  if (data?.length) data.forEach((post) => setQueryDataForPost(post, queryClient));
+  return { ...result, data: result.data ?? [] };
 }
 
 export function usePost(postId: string) {
