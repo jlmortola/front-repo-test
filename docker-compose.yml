@@ -1,0 +1,16 @@
+version: '3'
+services:
+  # frontend:
+  #   build:
+  #     context: ./front
+  #     dockerfile: Dockerfile
+  #   volumes:
+  #     - ./front/app:/app/app
+  #   ports:
+  #     - 3000:3000
+
+  api:
+    image: wefoxgroup/wg-web-challenge:latest
+    container_name: wg-web-challenge
+    ports:
+      - "4444:3000"
