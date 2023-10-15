@@ -1,5 +1,5 @@
-import Image from 'next/image'
-import {RegisterLink, LoginLink} from "@kinde-oss/kinde-auth-nextjs/server";
+import Image from 'next/image';
+import { RegisterLink, LoginLink } from '@kinde-oss/kinde-auth-nextjs/server';
 
 export default function Home() {
   return (
@@ -31,5 +31,5 @@ export default function Home() {
         </div>
       </div>
     </main>
-  )
+  );
 }
