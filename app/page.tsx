@@ -1,5 +1,12 @@
 import Image from 'next/image';
 import { RegisterLink, LoginLink } from '@kinde-oss/kinde-auth-nextjs/server';
+import Map from './components/map';
+
+const test = {
+  lat: 52.5065133,
+  long: 13.1445548,
+};
+
 
 export default function Home() {
   return (
@@ -30,6 +37,7 @@ export default function Home() {
           </a>
         </div>
       </div>
+      <Map coordinates={[test]} />
     </main>
   );
 }
