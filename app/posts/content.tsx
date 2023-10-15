@@ -21,5 +21,5 @@ export default function Content({ initialPostData }: { initialPostData: Post[] }
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Something wrong happened</p>;
 
-  return <Grid left={<Posts posts={data} />} right={<Map ref={mapContainerRef} />} />;
+  return <Grid hideBackButton left={<Posts posts={data} />} right={<Map ref={mapContainerRef} />} />;
 }
