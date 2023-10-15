@@ -10,5 +10,5 @@ export default function DeleteButton({ id }:{ id: string }) {
       mutation.mutate({ id });
     }
   };
-  return <button onClick={handleDelete}>Delete</button>;
+  return <button onClick={handleDelete} type="button">Delete</button>;
 }

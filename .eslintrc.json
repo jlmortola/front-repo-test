@@ -3,7 +3,7 @@
   "rules": {
     "react/react-in-jsx-scope": 0,
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
-    "max-len": ["error", 125],
+    "max-len": ["error", 150],
     "import/extensions": 0
   }
 }
