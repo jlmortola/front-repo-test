@@ -3,17 +3,17 @@
 import Grid from '@/components/grid';
 import Map from '@/components/map';
 import useMap from '@/components/map/useMap';
-import Form from '@components/form';
-import { usePost, useUpdatePost } from '@/posts/hooks';
-import { Post } from '@/posts/types';
+import { usePost } from '@/posts/hooks';
+import { UpdatePostRequest } from '@/posts/types';
+import Form from './form';
 
-function Content({ post }: { post: Post }) {
+function Content({ post }: { post: UpdatePostRequest }) {
   const coordinates = [{ lat: Number(post.lat), long: Number(post.long) }];
   const { markerCoordinates, mapContainerRef } = useMap({ showMarker: true, coordinates });
 
   return (
     <Grid
-      left={<Form post={post} mapCoordinates={markerCoordinates} postHandler={useUpdatePost} />}
+      left={<Form post={post} mapCoordinates={markerCoordinates} />}
       right={<Map ref={mapContainerRef} />}
     />
   );
@@ -25,5 +25,5 @@ export default function UpdatePost({ params }: { params: { id: string } }) {
   if (isLoading) return 'is loading';
   if (isError) return 'Something wrong happened';
 
-  return <Content post={data as Post} />;
+  return <Content post={data as UpdatePostRequest} />;
 }

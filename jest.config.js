@@ -10,6 +10,7 @@ const createJestConfig = nextJest({
 const config = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   testEnvironment: 'jest-environment-jsdom',
+  collectCoverageFrom: ['**/*.[jt]s?(x)', '!**/node_modules/**'],
   preset: 'ts-jest',
   verbose: true,
 };

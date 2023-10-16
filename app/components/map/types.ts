@@ -7,6 +7,6 @@ export type MapProps = {
 }
 
 export type MapHookProps = {
-  showMarker: boolean
-  coordinates: Coordinate[]
+  showMarker?: boolean
+  coordinates?: Coordinate[]
 }

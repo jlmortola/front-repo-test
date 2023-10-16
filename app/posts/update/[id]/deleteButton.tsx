@@ -1,5 +1,6 @@
 'use-client';
 
+import { redirect } from 'next/navigation';
 import { useDeletePost } from '@/posts/hooks';
 
 export default function DeleteButton({ id }:{ id: string }) {
@@ -10,5 +11,8 @@ export default function DeleteButton({ id }:{ id: string }) {
       mutation.mutate({ id });
     }
   };
-  return <button onClick={handleDelete} type="button">Delete</button>;
+
+  if (mutation.isSuccess) redirect('/posts');
+
+  return <button onClick={handleDelete} type="button">Delete Post</button>;
 }
