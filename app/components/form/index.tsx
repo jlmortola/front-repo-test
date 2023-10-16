@@ -11,8 +11,8 @@ import DeleteButton from './deleteButton';
 const initialState = {
   title: '',
   content: '',
-  lat: 0,
-  long: 0,
+  lat: '',
+  long: '',
   image_url: '',
 };
 
@@ -50,7 +50,7 @@ export default function Form({ mapCoordinates, post, postHandler }: FormProps) {
 
   if (mutation.isSuccess) redirect('/posts');
 
-  const hasImage = !!state.image_url; 
+  const hasImage = !!state.image_url;
 
   return (
     <div className="text-black">

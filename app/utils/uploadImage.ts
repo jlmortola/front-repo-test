@@ -18,8 +18,7 @@ export default function uploadImage(image: File): Promise<UploadResponse> {
       })
         .then((response) => {
           if (response.ok) return resolve(response.json());
-          reject(new Error('Image upload failed'));
-          throw new Error('Image upload failed');
+          return reject(new Error('Image upload failed'));
         })
         .then((data) => data)
         .catch((error) => {
