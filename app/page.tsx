@@ -1,13 +1,7 @@
 import Image from 'next/image';
 import { RegisterLink, LoginLink, getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 
-import Map from '@/components/map';
 import { redirect } from 'next/navigation';
-
-const test = {
-  lat: 52.5065133,
-  long: 13.1445548,
-};
 
 export default async function Home() {
   const { isAuthenticated } = getKindeServerSession();
@@ -42,7 +36,6 @@ export default async function Home() {
           </a>
         </div>
       </div>
-      <Map coordinates={[test]} />
     </main>
   );
 }

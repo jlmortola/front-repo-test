@@ -1,9 +1,25 @@
 {
-  "extends": ["next/core-web-vitals", "eslint-config-airbnb"],
+  "extends": ["next/core-web-vitals", "eslint-config-airbnb", "plugin:testing-library/react", "plugin:jest-dom/recommended"],
   "rules": {
     "react/react-in-jsx-scope": 0,
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
     "max-len": ["error", 150],
-    "import/extensions": 0
+    "import/extensions": 0,
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "test.{ts,tsx}",
+          "test-*.{ts,tsx}",
+          "**/*{.,_}{test,spec}.{ts,tsx}",
+          "**/jest.config.ts",
+          "**/jest.setup.ts"
+        ],
+        "optionalDependencies": false
+      }
+    ]
+  },
+  "env": {
+    "jest": true
   }
 }

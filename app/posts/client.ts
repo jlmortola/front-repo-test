@@ -18,9 +18,8 @@ export default async function client(
   };
 
   return fetch(`${API_URL}/${endpoint}`, config).then(async (response) => {
-    // queryCache.clear()
     const res = await response.json();
     if (response.ok) return res;
-    return Promise.reject(data);
-  }).catch((error) => console.error('error', error));
+    return Promise.reject(res);
+  });
 }
