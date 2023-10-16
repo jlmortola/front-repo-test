@@ -16,7 +16,7 @@ export default function Content({ initialPostData }: { initialPostData: Post[] }
   // TODO: do a better check on this
   const coordinates = useMemo(() => data.filter(hasCoordinates)
     .map((post) => ({ lat: Number(post.lat), long: Number(post.long) })), [data]);
-  const { mapContainerRef } = useMap({ coordinates })
+  const { mapContainerRef } = useMap({ coordinates });
 
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Something wrong happened</p>;

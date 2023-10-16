@@ -1,19 +1,8 @@
 'use client';
 
 import { useQuery, useMutation, useQueryClient, QueryClient } from 'react-query';
-import { redirect } from 'next/navigation';
 import client from './client';
-
-
 import { Post, CreatePostRequest, DeletePostRequest, UpdatePostRequest } from './types';
-
-const loadingPost = {
-  title: 'Loading...',
-  content: 'loading...',
-  lat: 'Loading...',
-  long: 'Loading...',
-  image_url: 'Loading...',
-};
 
 function setQueryDataForPost(post: Post, queryClient: QueryClient) {
   queryClient.setQueryData(['post', { post: post.id }], post);
@@ -41,8 +30,6 @@ export function usePost(postId: string) {
   return { ...result, data: result.data ?? [] };
 }
 
-// const [update, {error, isError}] = useUpdatePost()
-
 export function useUpdatePost() {
   const queryClient = useQueryClient();
 
@@ -51,7 +38,7 @@ export function useUpdatePost() {
       method: 'PUT',
       data: updates,
     }),
-    onMutate: async (updatedPost: Post) => {
+    onMutate: async (updatedPost: UpdatePostRequest) => {
       // Optimistic update
       await queryClient.cancelQueries({ queryKey: ['post', updatedPost.id] });
       const previousPost = queryClient.getQueryData<Post>(['post', updatedPost.id]);
@@ -81,7 +68,7 @@ export function useCreatePost() {
       method: 'POST',
       data: newPost,
     }),
-    onMutate: async (newPost: Post) => {
+    onMutate: async (newPost: CreatePostRequest) => {
       await queryClient.cancelQueries('posts');
       const previousPosts = queryClient.getQueryData<Post[]>('posts') || [];
       queryClient.setQueryData('posts', [...previousPosts, newPost]);

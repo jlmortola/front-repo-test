@@ -1,12 +1,16 @@
-import type { UseMutationResult } from 'react-query';
-import { Post } from '@/posts/types';
-import { Coordinate } from '../map/types';
+import { UpdatePostRequest, CreatePostRequest } from '@/posts/types';
+// import { Coordinate } from '../map/types';
 
 export type FormProps = {
-  mapCoordinates: Coordinate
-  post?: Post
-  postHandler: () => UseMutationResult
-}
+  state: UpdatePostRequest | CreatePostRequest
+  // eslint-disable-next-line no-unused-vars
+  setData: (data: Partial<UpdatePostRequest | CreatePostRequest>) => void;
+  isEdit?: boolean
+  savePost: () => void
+  isLoading: boolean
+  // eslint-disable-next-line max-len
+  // postHandler: () => UseMutationResult<any, unknown, CreatePostRequest | UpdatePostRequest, { previousPost: Post | undefined; updatedPost: Post | undefined; }>;
+};
 
 export type DataProps = {
   id?: string

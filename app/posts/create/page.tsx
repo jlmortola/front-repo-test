@@ -3,20 +3,19 @@
 import Grid from '@/components/grid';
 import Map from '@/components/map';
 import useMap from '@/components/map/useMap';
-import { useCreatePost } from '@/posts/hooks';
 
-import Form from '@components/form';
+import Form from './form';
 
-const BCN_COORDS = {
+const DEFAULT_COORDS_BCN_COORDS = {
   lat: 41.387742865889905,
-  long: 2.1701659004313782
-}
+  long: 2.1701659004313782,
+};
 
 export default function CreatePost() {
-  const { markerCoordinates, mapContainerRef } = useMap({ showMarker: true, coordinates: [BCN_COORDS] });
+  const { markerCoordinates, mapContainerRef } = useMap({ showMarker: true, coordinates: [DEFAULT_COORDS_BCN_COORDS] });
   return (
     <Grid
-      left={<Form mapCoordinates={markerCoordinates} postHandler={useCreatePost} />}
+      left={<Form mapCoordinates={markerCoordinates} />}
       right={<Map ref={mapContainerRef} />}
     />
   );
