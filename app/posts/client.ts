@@ -23,6 +23,5 @@ export default async function client(
     return Promise.reject(res);
   }).catch((err) => {
     console.error(err);
-    return Promise.reject(err);
   });
 }

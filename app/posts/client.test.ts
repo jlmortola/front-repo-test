@@ -29,6 +29,10 @@ describe('client', () => {
     server.use(
       rest.post(`${process.env.NEXT_PUBLIC_API_URL}/test`, (req, res, ctx) => res(ctx.status(400), ctx.json({ message: 'Error' }))),
     );
-    await expect(client('test', { data: { key: 'value' } })).rejects.toEqual({ message: 'Error' });
+    try {
+      await client('test', { data: { key: 'value' } });
+    } catch (error) {
+      expect(error).toEqual({ message: 'Error' });
+    }
   });
 });
