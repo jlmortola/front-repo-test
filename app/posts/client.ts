@@ -21,5 +21,8 @@ export default async function client(
     const res = await response.json();
     if (response.ok) return res;
     return Promise.reject(res);
+  }).catch((err) => {
+    console.error(err);
+    return Promise.reject(err);
   });
 }
