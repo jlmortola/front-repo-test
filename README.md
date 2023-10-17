@@ -86,6 +86,7 @@ The app currenlty runs on https://front-repo-test-td5f.vercel.app/ but you won't
 - Add CDN for better cache
 - Create a mapbox service running in our own servers.
 - Add a search box to find incidents.
+- Add proper form validation (joi).
 
 ### Known bugs
 - There is a bug in which after saving a post and redirected to the posts page, the edited marker wont update. Probably a issue with the useEffect.

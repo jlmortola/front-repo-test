@@ -19,6 +19,7 @@ export default function Form({ post, mapCoordinates } : Props) {
   const { isLoading, mutate } = mutation;
 
   const savePost = () => {
+    if (!state.title || !state.content) return;
     mutate(state);
   };
 
