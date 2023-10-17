@@ -19,7 +19,7 @@ This will build and run the service on your local machine on port 4444
 
 NOTE: To run locally you will need the var envs, the password was sent with the link of this repo. Feel free to ping me if you need them again.
 
-Envs: https://1time.app/secret/Xhy02t5BVCn6RRbEKP5A2xg9bGul00yydmVArLSu
+Envs: https://1time.app/secret/6rb6nqVOR2kLCMLfamyfjn9jwIJC9gvVy0WPar8Z
 
 Once you get them, create a file `.env.local` and add them there.
 
